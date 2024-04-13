@@ -1,0 +1,19 @@
+name: 'Docker Publish'
+description: 'An action to build a Docker image and publish it to a registry'
+inputs:
+  context:
+    description: 'Dockerfile path'
+    required: true
+  tags:
+    description: 'Publish tag'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Build and publish
+      uses: docker/build-push-action@v5
+      with:
+        context: ${{ inputs.context }}
+        push: true
+        platforms: linux/amd64,linux/arm64/v8
+        tags: ${{ inputs.tags }}
