@@ -7,6 +7,10 @@ inputs:
   tags:
     description: 'Publish tag'
     required: true
+  file:
+    description: 'Dockerfile path'
+    required: false
+    default: ${{ inputs.context }}/Dockerfile
 runs:
   using: "composite"
   steps:
@@ -15,5 +19,6 @@ runs:
       with:
         context: ${{ inputs.context }}
         push: true
+        file: ${{ inputs.file }}
         platforms: linux/amd64,linux/arm64/v8
         tags: ${{ inputs.tags }}
