@@ -10,7 +10,6 @@ inputs:
   file:
     description: 'Dockerfile path'
     required: false
-    default: ${{ inputs.context }}/Dockerfile
 runs:
   using: "composite"
   steps:
